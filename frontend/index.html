@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/choices.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+
+    <script defer src="./js/popper.js"></script>
+    <script defer src="./js/bootstrap.js"></script>
+    <script defer src="./js/choices.min.js"></script>
+    <script defer type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search flex">
+        <img
+          src="./icons/Group112.svg"
+          alt="логотип компании"
+          class="logo"
+          aria-label="логотип компании"
+        />
+        <img
+          src="./icons/logo320.svg"
+          alt="логотип компании"
+          class="logo320"
+          aria-label="логотип компании"
+        />
+        <form id="filterForm" class="search__form" method="get">
+          <input
+            id="searchContact"
+            aria-label="введите данные для поиска клиента"
+            class="search__input"
+            type="text"
+            name="search"
+            placeholder="Введите запрос"
+          />
+        </form>
+      </div>
+      <div class="app">
+        <h1 class="app__title">Клиенты</h1>
+        <table class="table">
+          <thead class="table__head">
+            <tr class="flex table__head-tr">
+              <th class="table__flag-id">
+                <button
+                  aria-label="сортировка по идентефикационному номеру"
+                  class="btn btn-id flex"
+                  id="sortId"
+                >
+                  <span class="btn__id-subtitle">ID</span>
+                  <svg
+                    class="btn__id-up"
+                    id="btnIdUp"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="#f5f5f5"
+                  >
+                    <path
+                      class="btn-id__patch-up"
+                      d="M2 6L2.705 6.705L5.5 3.915L5.5 10L6.5 10L6.5 3.915L9.29 6.71L10 6L6 2L2 6Z"
+                      fill="#9873FF"
+                    />
+                  </svg>
+                  <svg
+                    class="btn__id-dw"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_121_2493)">
+                      <path
+                        class="btn-id__patch-dw"
+                        d="M10 6L9.295 5.295L6.5 8.085L6.5 2H5.5L5.5 8.085L2.71 5.29L2 6L6 10L10 6Z"
+                        fill="#9873FF"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_121_2493">
+                        <rect width="12" height="12" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </th>
+              <th class="table__flag-fio flex">
+                <span class="table__subtitle-fio">Фамилия Имя Отчество</span>
+                <button
+                  aria-label="сортировка по Фамилии"
+                  class="btn-fio flex"
+                  id="sortFio"
+                >
+                  <svg
+                    class="btn-fio__up"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      class="btn-fio__path-up"
+                      d="M2 6L2.705 6.705L5.5 3.915L5.5 10L6.5 10L6.5 3.915L9.29 6.71L10 6L6 2L2 6Z"
+                      fill="#9873FF"
+                    />
+                  </svg>
+                  <svg
+                    class="btn-fio__dw"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_121_2493)">
+                      <path
+                        class="btn-fio__path-dw"
+                        d="M10 6L9.295 5.295L6.5 8.085L6.5 2H5.5L5.5 8.085L2.71 5.29L2 6L6 10L10 6Z"
+                        fill="#9873FF"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_121_2493">
+                        <rect width="12" height="12" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span class="btn-fio__subtitle-up">А-Я</span>
+                  <span class="btn-fio__subtitle-dw">Я-А</span>
+                </button>
+              </th>
+              <th class="table__flag-create">
+                <span class="table__subtitle-create1"> Дата и время&nbsp;</span
+                ><span class="table__subtitle-create2">создания</span>
+                <button
+                  aria-label="сортировка по дате создания"
+                  class="btn-create flex"
+                  id="sortCreated"
+                >
+                  <svg
+                    class="btn-create__up"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      class="btn-create__path-up"
+                      d="M2 6L2.705 6.705L5.5 3.915L5.5
+                    10L6.5 10L6.5 3.915L9.29 6.71L10 6L6 2L2 6Z"
+                      fill="#9873FF"
+                    />
+                  </svg>
+                  <svg
+                    class="btn-create__dw"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_121_2493)">
+                      <path
+                        class="btn-create__path-dw"
+                        d="M10 6L9.295 5.295L6.5 8.085L6.5 2H5.5L5.5 8.085L2.71 5.29L2 6L6 10L10 6Z"
+                        fill="#9873FF"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_121_2493">
+                        <rect width="12" height="12" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </th>
+              <th class="table__flag-update flex">
+                <span class="table__subtitle-update1">Последние&nbsp;</span
+                ><span class="table__subtitle-update2">изменения</span>
+                <button
+                  aria-label="сортировка по дате изменения"
+                  class="btn-update flex"
+                  id="sortUpdate"
+                >
+                  <svg
+                    class="btn-update__up"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      class="btn-update__path-up"
+                      d="M2 6L2.705 6.705L5.5 3.915L5.5
+                10L6.5 10L6.5 3.915L9.29 6.71L10 6L6 2L2 6Z"
+                      fill="#9873FF"
+                    />
+                  </svg>
+                  <svg
+                    class="btn-update__dw"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_121_2493)">
+                      <path
+                        class="btn-update__path-dw"
+                        d="M10 6L9.295 5.295L6.5 8.085L6.5 2H5.5L5.5 8.085L2.71 5.29L2 6L6 10L10 6Z"
+                        fill="#9873FF"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_121_2493">
+                        <rect width="12" height="12" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </th>
+              <th class="table__flag-contact flex">
+                <span class="table__subtitle-contact">Контакты</span>
+              </th>
+              <th class="table__flag-action flex">
+                <span class="table__subtitle-operation">Действия</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="table__body" id="listclient">
+            <td class="table__body-sninner">
+              <svg class="spinner" viewBox="0 0 50 50">
+                <circle
+                  class="path"
+                  cx="25"
+                  cy="25"
+                  r="20"
+                  fill="none"
+                  stroke-width="7"
+                ></circle>
+              </svg>
+            </td>
+          </tbody>
+        </table>
+
+        <!-- Кнопка-триггер модального окна -->
+        <div class="app__modal flex">
+          <button
+            type="button"
+            class="app__btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            id="btnOpenModalAdd"
+            aria-label="Добавить клиента"
+          >
+            <svg
+              width="23"
+              height="16"
+              viewBox="0 0 23 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z"
+                fill="#9873FF"
+              />
+            </svg>
+            Добавить клиента
+          </button>
+        </div>
+
+        <!-- Модальное окно -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          data-bs-backdrop="static"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Новый клиент</h1>
+                <button
+                  id="btnCloseModal"
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Закрыть окно добавление контакта"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  class="flex-fill modal__form needs-validation"
+                  action="#"
+                  id="addForm"
+                >
+                  <div class="lastname">
+                    <input
+                      class="lastname__input form-control"
+                      type="text"
+                      aria-label="введите фамилию"
+                      id="addFormLastnameInp"
+                      required="required"
+                      name="lastName"
+                    />
+                    <label class="lastname__label"
+                      >Фамилия<span class="lastname__span">*</span></label
+                    >
+                  </div>
+                  <div class="name">
+                    <input
+                      class="name__input form-control"
+                      type="text"
+                      aria-label="введите имя"
+                      id="addFormNameInp"
+                      required="required"
+                      name="name"
+                    />
+                    <label class="name__label"
+                      >Имя<span class="name__span">*</span></label
+                    >
+                  </div>
+                  <div class="surename">
+                    <input
+                      class="surename__input form-control"
+                      type="text"
+                      aria-label="введите отчество"
+                      id="addFormSurenameInp"
+                      required="required"
+                      name="surname"
+                    />
+                    <label class="surename__label">Отчество</label>
+                  </div>
+
+                  <div class="modal__contact">
+                    <div class="" id="contactFormsContainer"></div>
+
+                    <div id="contactFormTemplate" style="display: none">
+                      <div class="modal__contact-block">
+                        <div class="modal__contact-form">
+                          <select
+                            class="modal__contact-type js-choice"
+                            id="contactTypeDropdown"
+                          >
+                            <option class="choice" value="Email">
+                              <span
+                                class="choice__paragraph"
+                                aria-label="'электронная почта"
+                                >Email</span
+                              >
+                            </option>
+                            <option class="choice" value="phone">
+                              <span
+                                class="choice__paragraph"
+                                aria-label="телефон"
+                                >Телефон</span
+                              >
+                            </option>
+                            <option class="choice" value="vk">
+                              <span
+                                class="choice__paragraph"
+                                aria-label="вконтакте"
+                                >ВКонтакте</span
+                              >
+                            </option>
+                            <option class="choice" value="fb">
+                              <span
+                                class="choice__paragraph"
+                                aria-label="фэйсбук"
+                                >FaceBook</span
+                              >
+                            </option>
+                            <option
+                              class="choice"
+                              value="tw"
+                              aria-label="твиттер"
+                            >
+                              <span
+                                class="choice__paragraph"
+                                aria-label="твиттер"
+                                >Twitter</span
+                              >
+                            </option>
+                            <option
+                              class="choice"
+                              value="phone2"
+                              aria-label="дополнительный телефон"
+                            >
+                              <span
+                                class="choice__paragraph"
+                                aria-label="дополнительный телефон"
+                                >Доп. телефон</span
+                              >
+                            </option>
+                            <option
+                              class="choice"
+                              value="adress"
+                              aria-label="адрес"
+                            >
+                              <span class="choice__paragraph" aria-label="адрес"
+                                >Адрес</span
+                              >
+                            </option>
+                            <option
+                              class="choice"
+                              value="city"
+                              aria-label="город"
+                            >
+                              <span class="choice__paragraph" aria-label="город"
+                                >Город</span
+                              >
+                            </option>
+                            <option class="choice" value="country">
+                              <span
+                                class="choice__paragraph"
+                                aria-label="страна"
+                                >Страна</span
+                              >
+                            </option>
+                            <option
+                              class="choice"
+                              value="index"
+                              aria-label="индекс"
+                            >
+                              <span
+                                class="choice__paragraph"
+                                aria-label="индекс"
+                                >Индекс</span
+                              >
+                            </option>
+                          </select>
+                          <input
+                            id="addFormContactInp"
+                            type="text"
+                            class="modal__contact-value"
+                            placeholder="Введите данные выбранного контакта"
+                          />
+
+                          <button
+                            id="modalAddBtnClose"
+                            class="modal__btn-close flex"
+                            aria-label="удалить контакт"
+                          >
+                            <svg
+                              class="modal__btn-svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g clip-path="url(#clip0_121_2516)">
+                                <path
+                                  d="M8 2C4.682 2 2 4.682 2 8C2 11.318 4.682 14 8 14C11.318 14 14 11.318 14 8C14 4.682 11.318 2 8 2ZM8 12.8C5.354 12.8 3.2 10.646 3.2 8C3.2 5.354 5.354 3.2 8 3.2C10.646 3.2 12.8 5.354 12.8 8C12.8 10.646 10.646 12.8 8 12.8ZM10.154 5L8 7.154L5.846 5L5 5.846L7.154 8L5 10.154L5.846 11L8 8.846L10.154 11L11 10.154L8.846 8L11 5.846L10.154 5Z"
+                                  fill="#B0B0B0"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_121_2516">
+                                  <rect width="16" height="16" fill="white" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal__add-contact">
+                      <button
+                        class="modal__btn-add"
+                        type="button"
+                        id="openContactFormBtn"
+                        aria-label="добавть контакт"
+                      >
+                        Добавить контакт
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="modal__contact-save flex">
+                    <button
+                      class="modal__btn-save"
+                      type="submit"
+                      aria-label="сохранить клиента"
+                      id="submitButton"
+                    >
+                      Сохранить
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="modal__btn-end btn-secondary"
+                  data-bs-dismiss="modal"
+                  aria-label="отмена"
+                >
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Модальное окно изменить-->
+        <div
+          class="modal fade"
+          id="exampleModalUpdate"
+          tabindex="-1"
+          aria-hidden="true"
+          data-bs-backdrop="static"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title">Изменить данные</h1>
+                <div class="modal-id" id="modalId"></div>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Закрыть окно изменения клиента"
+                  id="btnCloseModalUpdate"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form
+                  class="flex-fill modal__form needs-validation"
+                  action="#"
+                  id="updateForm"
+                >
+                  <div class="lastname">
+                    <input
+                      class="lastname__input form-control"
+                      type="text"
+                      aria-label="введите фамилию"
+                      id="updateFormLastnameInp"
+                      required="required"
+                      name="lastName"
+                    />
+                    <label class="lastname__label"
+                      >Фамилия<span class="lastname__span">*</span></label
+                    >
+                  </div>
+                  <div class="name">
+                    <input
+                      class="name__input form-control"
+                      type="text"
+                      aria-label="введите имя"
+                      id="updateFormNameInp"
+                      required="required"
+                      name="name"
+                    />
+                    <label class="name__label"
+                      >Имя<span class="name__span">*</span></label
+                    >
+                  </div>
+                  <div class="surename">
+                    <input
+                      class="surename__input form-control"
+                      type="text"
+                      aria-label="введите отчество"
+                      id="updateFormSurenameInp"
+                      required="required"
+                      name="surname"
+                    />
+                    <label class="surename__label">Отчество</label>
+                  </div>
+
+                  <div class="modal__update">
+                    <div class="" id="updateFormsContainer"></div>
+
+                    <div id="updateFormTemplate" style="display: none">
+                      <div class="modal__update-block">
+                        <div class="modal__update-form">
+                          <select
+                            class="modal__update-type modal__update-choice"
+                            id="updatetTypeDropdown"
+                          >
+                            <option class="choice" value="Email" name="Email">
+                              <p
+                                class="choice__paragraph"
+                                aria-label="'электронная почта"
+                              >
+                                Email
+                              </p>
+                            </option>
+                            <option class="choice" value="phone" name="phone">
+                              <p class="choice__paragraph" aria-label="телефон">
+                                Телефон
+                              </p>
+                            </option>
+                            <option class="choice" value="vk" name="vk">
+                              <p
+                                class="choice__paragraph"
+                                aria-label="вконтакте"
+                              >
+                                ВКонтакте
+                              </p>
+                            </option>
+                            <option class="choice" value="fb" name="fb">
+                              <p class="choice__paragraph" aria-label="фэйсбук">
+                                FaceBook
+                              </p>
+                            </option>
+                            <option class="choice" value="tw" name="tw">
+                              <p class="choice__paragraph" aria-label="твиттер">
+                                Twitter
+                              </p>
+                            </option>
+                            <option class="choice" value="phone2" name="phone">
+                              <p
+                                class="choice__paragraph"
+                                aria-label="дополнительный телефон"
+                              >
+                                Доп. телефон
+                              </p>
+                            </option>
+                            <option class="choice" value="adress" name="adress">
+                              <p class="choice__paragraph" aria-label="адрес">
+                                Адрес
+                              </p>
+                            </option>
+                            <option class="choice" value="city" name="city">
+                              <p class="choice__paragraph" aria-label="город">
+                                Город
+                              </p>
+                            </option>
+                            <option
+                              class="choice"
+                              value="country"
+                              name="country"
+                            >
+                              <p class="choice__paragraph" aria-label="страна">
+                                Страна
+                              </p>
+                            </option>
+                            <option class="choice" value="index" name="index">
+                              <p class="choice__paragraph" aria-label="индекс">
+                                Индекс
+                              </p>
+                            </option>
+                          </select>
+                          <input
+                            id="updateFormContactInp"
+                            type="text"
+                            class="modal__update-value"
+                            placeholder="Введите данные контакта"
+                          />
+
+                          <button
+                            id="modalUpdateBtnClose"
+                            class="modal__btn-close flex"
+                            aria-label="удалиить контакт клиента"
+                          >
+                            <svg
+                              class="modal__btn-svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <g clip-path="url(#clip0_121_2516)">
+                                <path
+                                  d="M8 2C4.682 2 2 4.682 2 8C2 11.318 4.682 14 8 14C11.318 14 14 11.318 14 8C14 4.682 11.318 2 8 2ZM8 12.8C5.354 12.8 3.2 10.646 3.2 8C3.2 5.354 5.354 3.2 8 3.2C10.646 3.2 12.8 5.354 12.8 8C12.8 10.646 10.646 12.8 8 12.8ZM10.154 5L8 7.154L5.846 5L5 5.846L7.154 8L5 10.154L5.846 11L8 8.846L10.154 11L11 10.154L8.846 8L11 5.846L10.154 5Z"
+                                  fill="#B0B0B0"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_121_2516">
+                                  <rect width="16" height="16" fill="white" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="modal__add-contact">
+                      <button
+                        class="modal__btn-add"
+                        type="button"
+                        id="openUpdateFormBtn"
+                        aria-label="добавть контакт"
+                      >
+                        Добавить контакт
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="modal__update-save flex">
+                    <button
+                      class="modal__btn-save"
+                      type="submit"
+                      aria-label="сохранить контакт"
+                      id="submitButtonUpdate"
+                    >
+                      Сохранить
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="btnModalDelet"
+                  class="modal__btn-end btn-secondary"
+                  data-bs-dismiss="modal"
+                  aria-label="удалить клиента"
+                >
+                  Удалить клиента
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Модальное окно удаления клиента -->
+
+        <div
+          class="modal fade"
+          id="modalDeletClient"
+          tabindex="-1"
+          aria-labelledby="modalDeletClientLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content modal__delet-content flex">
+              <div class="modal-header modal__delet-header">
+                <h1 class="modal-title modal__delet-title">Удалить клиента</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Закрыть окно удаления"
+                ></button>
+              </div>
+              <div class="modal-body modal__delet-body">
+                Вы действительно хотите удалить данного клиента?
+              </div>
+              <div class="modal-footer modal__delet-footer">
+                <button
+                  type="button"
+                  id="readyDeleteBtn"
+                  aria-label="подтвердить удалить клиента"
+                  class="modal__delete-btn btn-primary"
+                >
+                  Удалить
+                </button>
+                <button
+                  type="button"
+                  id="readyCancelBtn"
+                  data-bs-dismiss="modal"
+                  class="modal__delet-cancel btn-secondary"
+                  aria-label="отмена удаления"
+                >
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Модальное окно удаления клиента для таблицы -->
+        <!-- 
+        <div
+          class="modal fade"
+          id="modalDeletClientTable"
+          tabindex="-1"
+          aria-labelledby="modalDeletClientLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content modal__delet-content flex">
+              <div class="modal-header modal__delet-header">
+                <h1 class="modal-title modal__delet-title">Удалить клиента</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Закрыть окно удаления"
+                ></button>
+              </div>
+              <div class="modal-body modal__delet-body">
+                Вы действительно хотите удалить данного клиента?
+              </div>
+              <div class="modal-footer modal__delet-footer">
+                <button
+                  type="button"
+                  id="readyDeleteBtnTable"
+                  aria-label="подтвердить удалить клиента"
+                  class="modal__delete-btn btn-primary"
+                >
+                  Удалить
+                </button>
+                <button
+                  type="button"
+                  id="readyCancelBtnTable"
+                  data-bs-dismiss="modal"
+                  class="modal__delet-cancel btn-secondary"
+                  aria-label="отмена удаления"
+                >
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </body>
+</html>
